@@ -529,7 +529,10 @@ profile-photo .img{
   
   .education-content .row .timeline-div{
     width: 320px;
+    padding: 30px 15px;
     border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    position: relative;
   }
 
   .project{
