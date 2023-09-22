@@ -529,6 +529,7 @@ profile-photo .img{
   
   .education-content .row .timeline-div{
     width: 320px;
+    border: 1px solid #e5e5e5;
   }
 
   .project{
