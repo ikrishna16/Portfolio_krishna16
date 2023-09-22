@@ -148,7 +148,7 @@ profile-photo .img{
 }
 .profile-text h1{
   color: #fed700;
-  font-size: 3rem; 
+  font-size: 45px; 
 }
 .profile-text p{
   color:#e5e5e5;
@@ -526,6 +526,11 @@ profile-photo .img{
     max-width: 100%;
     margin-top: 30px;
   }
+  
+  .education-content .row .timeline-div{
+    width: 320px;
+  }
+
   .project{
     flex-basis: 100%;
     margin-bottom: 30px;
