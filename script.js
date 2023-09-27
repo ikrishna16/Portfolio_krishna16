@@ -1,116 +1,170 @@
-$(document).ready(function() {
 
-  //sticky header
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > 1) {
-        $(".header-area").addClass("sticky");
-      } else {
-        $(".header-area").removeClass("sticky");
-      }
-      
-  
-      // Update the active section in the header
-      updateActiveSection();
-    });
-  
-    $(".header ul li a").click(function(e) {
-      e.preventDefault(); 
-  
-      var target = $(this).attr("href");
-  
-      if ($(target).hasClass("active-section")) {
-        return; 
-      }
-  
-      if (target === "#home") {
-        $("html, body").animate(
-          {
-            scrollTop: 0 
-          },
-          500
-        );
-      } else {
-        var offset = $(target).offset().top - 40; 
-  
-        $("html, body").animate(
-          {
-            scrollTop: offset
-          },
-          500
-        );
-      }
-  
-      $(".header ul li a").removeClass("active");
-      $(this).addClass("active");
-    });
-  
 
-    //Initial content revealing js
-    ScrollReveal({
-      distance: "100px",
-      duration: 2000,
-      delay: 200
-    });
-  
-    ScrollReveal().reveal(".header a, .profile-photo, .about-content, .education", {
-      origin: "left"
-    });
-    ScrollReveal().reveal(".header ul, .profile-text, .about-skills, .certificate", {
-      origin: "right"
-    });
-    ScrollReveal().reveal(".project-title, .contact-title", {
-      origin: "top"
-    });
-    ScrollReveal().reveal(".projects, .contact", {
-      origin: "bottom"
-    });
+  function visualmode(){
+    document.body.classList.toggle('light-mode');
+    document.getElementById('labelforsound').classList.toggle('invertsoundlabel');
+    document.querySelector('.about-heading-article').classList.toggle('heading-article-light');
+    document.querySelector('.aboutHeadingP').classList.toggle('heading-article-light');
 
-  //contact form to excel sheet
-  const scriptURL = 'https://docs.google.com/spreadsheets/d/1c7f0aP5_QOR_gqU2Dv2g_d3TpLAvi2at3_Gf03j0-P4/edit?usp=sharing';
-  const form = document.forms['submitToGoogleSheet']
-  const msg = document.getElementById("msg")
+    document.querySelector('.skills-heading-article').classList.toggle('heading-article-light');
+    document.querySelector('.skillsHeadingP').classList.toggle('heading-article-light');
 
-  form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then(response => {
-              msg.innerHTML = "Message sent successfully"
-              setTimeout(function () {
-                  msg.innerHTML = ""
-              }, 5000)
-              form.reset()
-          })
-          .catch(error => console.error('Error!', error.message))
-  })
-    
-  });
-  
-  function updateActiveSection() {
-    var scrollPosition = $(window).scrollTop();
-  
-    // Checking if scroll position is at the top of the page
-    if (scrollPosition === 0) {
-      $(".header ul li a").removeClass("active");
-      $(".header ul li a[href='#home']").addClass("active");
-      return;
-    }
-  
-    
-    // Iterate through each section and update the active class in the header
-    $("section").each(function() {
-      var target = $(this).attr("id");
-      var offset = $(this).offset().top;
-      var height = $(this).outerHeight();
-  
-      if (
-        scrollPosition >= offset - 40 &&
-        scrollPosition < offset + height - 40
-      ) {
-        $(".header ul li a").removeClass("active");
-        $(".header ul li a[href='#" + target + "']").addClass("active");
-      }
-    });
+    document.querySelector('.projects-heading-article').classList.toggle('heading-article-light');
+    document.querySelector('.projectsHeadingP').classList.toggle('heading-article-light');
+   
+    document.querySelector('.frontend-dev-heading').classList.toggle('heading-article-light');
+    document.querySelector('.designing-heading').classList.toggle('heading-article-light');
+    document.querySelector('.languages-heading').classList.toggle('heading-article-light');
+
+    document.getElementById('html').classList.toggle('language-gradient-class');
+    document.getElementById('css').classList.toggle('language-gradient-class');
+    document.getElementById('bootstrap').classList.toggle('language-gradient-class');
+    document.getElementById('react').classList.toggle('language-gradient-class');
+    document.getElementById('js').classList.toggle('language-gradient-class');
+    document.getElementById('Node JS').classList.toggle('language-gradient-class');
+    document.getElementById('MongoDB ').classList.toggle('language-gradient-class');
+    // document.getElementById('ai').classList.toggle('language-gradient-class');
+    document.getElementById('c').classList.toggle('language-gradient-class');
+    // document.getElementById('project-box1').classList.toggle('language-gradient-class');
+    // document.getElementById('project-box2').classList.toggle('language-gradient-class');
+    let projectBox = document.querySelectorAll('.project-box');
+    projectBox.forEach(Box => {
+        Box.classList.toggle('language-gradient-class');
+    })
+
   }
-  
+let emptyArea = document.getElementById("emptyarea");
+ let mobileTogglemenu = document.getElementById("mobiletogglemenu");
+// toggle menu by clicking on hamburger
+function hamburgerMenu() {
+    document.body.classList.toggle("stopscrolling");
+ document.getElementById("mobiletogglemenu").classList.toggle("show-toggle-menu");
+ document.getElementById("emptyarea").classList.toggle("blur-class");
+document.getElementById("burger-bar1").classList.toggle("hamburger-animation1");
+document.getElementById("burger-bar2").classList.toggle("hamburger-animation2");
+document.getElementById("burger-bar3").classList.toggle("hamburger-animation3");
+}
 
- 
+
+// close Mobile hamburger toggle menu while clicking in empty area
+emptyArea.addEventListener('click',hidetogglemenu);
+function hidetogglemenu(){
+document.body.classList.remove("stopscrolling");
+document.getElementById("mobiletogglemenu").classList.remove("show-toggle-menu");
+document.getElementById("emptyarea").classList.remove("blur-class");
+document.getElementById("burger-bar1").classList.remove("hamburger-animation1");
+document.getElementById("burger-bar2").classList.remove("hamburger-animation2");
+document.getElementById("burger-bar3").classList.remove("hamburger-animation3");
+}
+
+const sections = document.querySelectorAll('section');
+const navLi = document.querySelectorAll('.navbar .navbar-tabs .navbar-tabs-ul a li');
+const mobilenavLi = document.querySelectorAll('.mobiletogglemenu .mobile-navbar-tabs-ul a li');
+
+window.addEventListener('scroll', ()=>{
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if(pageYOffset >= (sectionTop - 500)){
+      current = section.getAttribute('id');
+    }
+  })
+
+  mobilenavLi.forEach( li => {
+    li.classList.remove('activeThismobiletab');
+    if(li.classList.contains(current)){
+      li.classList.add('activeThismobiletab')
+    }
+  })
+navLi.forEach( li => {
+  li.classList.remove('activeThistab');
+  if(li.classList.contains(current)){
+    li.classList.add('activeThistab')
+  }
+})
+})
+console.log('Designed and Developed by Krishna gupta full stack web developer ', 'background-image: linear-gradient(90deg,#8000ff,#6bc5f8); color: white;font-weight:900;font-size:1rem; padding:20px;');
+
+
+
+let mybutton = document.getElementById("backtotopbutton");
+window.onscroll = function(){
+  scrollFunction()
+};
+
+function scrollFunction(){
+  if(document.body.scrollTop > 400 || document.documentElement.scrollTop > 400)
+  {
+    mybutton.style.display = "block";
+  }
+   else{
+      mybutton.style.display = "none";
+     
+      }
+}
+
+function scrolltoTopfunction(){
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+// document.addEventListener("contextmenu", function (e){
+//   e.preventDefault();
+// }, false);
+
+document.addEventListener("contextmenu", function(e){
+  if (e.target.nodeName === "IMG") {
+      e.preventDefault();
+  }
+}, false);
+
+
+
+
+
+let pupils = document.getElementsByClassName('pupil');
+let pupilsArr = Array.from(pupils);
+// console.log(pupils);
+
+let pupilStartPoint = -1;
+let pupilRange = 3;
+
+// mouse X 
+let mouseXStartPoint = 0;
+let mouseXEndPoint = window.innerWidth;
+let currentXPosition = 0;
+let fracXValue = 0;
+
+
+// mouse Y position 
+let mouseYEndPoint = window.innerHeight;
+let currentYPosition = 0;
+let fracYValue = 0;
+
+let mouseXRange = mouseXEndPoint - mouseXStartPoint;
+
+const mouseMove = (event) => {
+    currentXPosition = event.clientX - mouseXStartPoint;
+    fracXValue = currentXPosition / mouseXRange;
+
+    currentYPosition = event.clientY;
+    fracYValue = currentYPosition / mouseYEndPoint;
+    
+    let pupilXCurrrentPosition = pupilStartPoint + (fracXValue * pupilRange);
+    let pupilYCurrrentPosition = pupilStartPoint + (fracYValue * pupilRange);
+
+    pupilsArr.forEach((curPupil) => {
+        curPupil.style.transform= `translate(${pupilXCurrrentPosition}px, ${pupilYCurrrentPosition}px)`;
+    })
+
+}
+
+const windowResize = (event) => {
+    mouseXEndPoint = window.innerWidth;
+    mouseYEndPoint = window.innerHeight;
+    mouseXRange = mouseXEndPoint - mouseXStartPoint;
+}
+
+
+window.addEventListener('mousemove', mouseMove);
+window.addEventListener('resize', windowResize);
