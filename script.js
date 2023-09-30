@@ -84,7 +84,7 @@ navLi.forEach( li => {
   }
 })
 })
-console.log('Designed and Developed by Krishna gupta full stack web developer ', 'background-image: linear-gradient(90deg,#8000ff,#6bc5f8); color: white;font-weight:900;font-size:1rem; padding:20px;');
+console.log('Designed and Developed by Krishna gupta full stack web developer');
 
 
 
@@ -120,51 +120,3 @@ document.addEventListener("contextmenu", function(e){
 
 
 
-
-
-let pupils = document.getElementsByClassName('pupil');
-let pupilsArr = Array.from(pupils);
-// console.log(pupils);
-
-let pupilStartPoint = -1;
-let pupilRange = 3;
-
-// mouse X 
-let mouseXStartPoint = 0;
-let mouseXEndPoint = window.innerWidth;
-let currentXPosition = 0;
-let fracXValue = 0;
-
-
-// mouse Y position 
-let mouseYEndPoint = window.innerHeight;
-let currentYPosition = 0;
-let fracYValue = 0;
-
-let mouseXRange = mouseXEndPoint - mouseXStartPoint;
-
-const mouseMove = (event) => {
-    currentXPosition = event.clientX - mouseXStartPoint;
-    fracXValue = currentXPosition / mouseXRange;
-
-    currentYPosition = event.clientY;
-    fracYValue = currentYPosition / mouseYEndPoint;
-    
-    let pupilXCurrrentPosition = pupilStartPoint + (fracXValue * pupilRange);
-    let pupilYCurrrentPosition = pupilStartPoint + (fracYValue * pupilRange);
-
-    pupilsArr.forEach((curPupil) => {
-        curPupil.style.transform= `translate(${pupilXCurrrentPosition}px, ${pupilYCurrrentPosition}px)`;
-    })
-
-}
-
-const windowResize = (event) => {
-    mouseXEndPoint = window.innerWidth;
-    mouseYEndPoint = window.innerHeight;
-    mouseXRange = mouseXEndPoint - mouseXStartPoint;
-}
-
-
-window.addEventListener('mousemove', mouseMove);
-window.addEventListener('resize', windowResize);
