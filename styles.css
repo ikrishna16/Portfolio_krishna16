@@ -491,6 +491,84 @@ margin: 0px 12px 0px 0px;
 .letsTalkBtn:active .letsTalkBtn-BG {
   transform: translateY(-7px) translateX(-7px);
 }
+
+/* Whatsapp btn */
+
+.whatsapp-btn {
+  z-index:9998;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom:60px;
+  left:10px;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  background: #4dc247
+
+}
+
+/* whatsapp sign */
+.whatsapp {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp svg {
+  width: 24px;
+}
+
+.whatsapp svg path {
+  fill: white;
+}
+/* text */
+.text-whatsapp {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.whatsapp-btn:hover {
+  width: 130px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.whatsapp-btn:hover .whatsapp {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.whatsapp-btn:hover .text-whatsapp {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.whatsapp-btn:active {
+  transform: translate(2px ,2px);
+}
+
+
+/*        resume btn        */
+
 .resume-btn {
   z-index:9998;
   display: flex;
