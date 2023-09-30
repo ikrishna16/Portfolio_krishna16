@@ -210,7 +210,7 @@ noscript{
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: headshake 15s linear infinite;
+  animation: headshake 5s linear infinite;
   transform-origin: bottom;
   position: relative;
 }
