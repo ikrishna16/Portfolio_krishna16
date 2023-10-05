@@ -25,8 +25,9 @@
     document.getElementById('MongoDB ').classList.toggle('language-gradient-class');
     // document.getElementById('ai').classList.toggle('language-gradient-class');
     document.getElementById('c').classList.toggle('language-gradient-class');
-    // document.getElementById('project-box1').classList.toggle('language-gradient-class');
-    // document.getElementById('project-box2').classList.toggle('language-gradient-class');
+    document.getElementById('projects').classList.toggle('language-gradient-class');
+    document.getElementById('project-box2').classList.toggle('language-gradient-class');
+    document.getElementById('project-box1').classList.toggle('language-gradient-class');
     let projectBox = document.querySelectorAll('.project-box');
     projectBox.forEach(Box => {
         Box.classList.toggle('language-gradient-class');

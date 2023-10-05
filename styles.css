@@ -557,6 +557,7 @@ margin: 0px 12px 0px 0px;
 }
 .letsTalkBtn {
   position: relative;
+  top: -10px;
   background-color: transparent;
   border: none;
   width: 180px;
@@ -1400,7 +1401,7 @@ border: none;
       padding-left: 100px;
   }
   .about-section{
-    height: 500px;
+    height: 560px;
       width: 80%;
       display: flex;
       flex-direction: column;
@@ -1793,6 +1794,7 @@ transition-duration: 1.6s;
   }
   .skills-section,.about-section,.projects-section-div{
       width: 80%;
+      height: auto;
   }
   .info-div{
       padding: 0 30px;
@@ -1836,7 +1838,17 @@ transition-duration: 1.6s;
   .logos{
       gap: 20px;
   }
-   
+  .letsTalkBtn {
+    position: relative;
+    top: -30px;
+    background-color: transparent;
+    border: none;
+    width: 180px;
+    height: 40px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: all .3s;
+  }
 }
 @media screen and (max-width:300px) {
   html {
@@ -1877,6 +1889,17 @@ transition-duration: 1.6s;
   }
   .logos{
       gap: 20px;
+  }
+  .letsTalkBtn {
+    position: relative;
+    top: -30px;
+    background-color: transparent;
+    border: none;
+    width: 180px;
+    height: 40px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: all .3s;
   }
 }
 
